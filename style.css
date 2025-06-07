@@ -1,0 +1,573 @@
+/* Apply Devanagari support along with Poppins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+}
+
+.logo img {
+  width: 120px;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.language,
+.language option {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-family: 'Noto Sans Devanagari', 'Poppins', sans-serif;
+  border-radius: 4px;
+}
+
+.sign-in {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+/* Overlay background */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup box */
+.popup-content {
+  background: #111;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.6);
+  text-align: center;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Form inputs */
+.popup-content input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Login button */
+.popup-content button {
+  width: 100%;
+  padding: 12px;
+  background-color: #e50914;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #ff0a16;
+}
+
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('https://assets.nflxext.com/ffe/siteui/vlv3/9c5457b8-9ab0-4a04-9fc1-e608d5670f1a/710d74e0-7158-408e-8d9b-23c219dee5df/IN-en-20210719-popsignuptwoweeks-perspective_alpha_website_small.jpg') center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 700px;
+  padding: 20px;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.email-form {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.email-form input {
+  flex: 1;
+  padding: 15px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+}
+
+.email-form button {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Shows Section */
+.shows-section {
+  padding: 50px 20px;
+  background-color: #111;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: #e50914; /* Netflix red */
+  transition: width 0.3s ease;
+}
+
+.section-title:hover {
+  color: #e50914;
+}
+
+.section-title:hover::after {
+  width: 100px;
+}
+
+
+.shows-row {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.show-card {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: #222;
+}
+
+.show-card img {
+  width: 100%;
+  height: 100%;       /* fill container */
+  object-fit: cover;  /* crop & cover without distortion */
+  display: block;
+  border-radius: 10px;
+}
+
+.show-card:hover {
+  transform: scale(1.05);
+}
+.shows-row::-webkit-scrollbar {
+  display: none;
+}
+.shows-row {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Watch Everywhere Section */
+.features-section {
+  background-color: #111;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 4px solid #222;
+}
+
+.feature h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.feature p {
+  color: #bbb;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.feature-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-image-container {
+  position: relative;   /* needed for absolute caption */
+  width: 300px;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  background-color: #111;
+}
+
+.feature-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 0;
+  user-select: none;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.feature-image-container:hover {
+  border-color: #e50914;
+  transform: scale(1.05);
+}
+
+.feature-image-container:hover img {
+  transform: scale(1.03);
+}
+
+/* FAQ Section */
+.faq-section {
+  background-color: #222;
+  padding: 3rem 2rem;
+  max-width: 700px;
+  margin: 3rem auto;
+  border-radius: 12px;
+  color: #eee;
+  font-family: 'Poppins', sans-serif;
+}
+
+.faq-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: white; /* Netflix red */
+  letter-spacing: 1.2px;
+}
+
+.faq {
+  background: #333;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(229, 9, 20, 0.3); /* red shadow */
+  transition: background-color 0.3s ease;
+  position: relative;
+  padding: 1rem 2.5rem 1rem 1.5rem;
+}
+
+.faq:hover {
+  background-color: #444;
+}
+
+.faq h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.faq h3::after {
+  content: '+';
+  position: absolute;
+  right: 20px;
+  font-size: 1.6rem;
+  color: #e50914; /* red */
+  transition: transform 0.3s ease;
+}
+
+.faq.active h3::after {
+  content: '−';
+  transform: rotate(180deg);
+}
+
+.faq p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  font-size: 1rem;
+  color: #ddd;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+  user-select: text;
+}
+
+.faq.active p {
+  max-height: 300px; /* Enough to show full content */
+  margin-top: 0.8rem;
+}
+
+
+/* Device Section */
+.device-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 30px;
+  background-color: #000;
+}
+
+.device-content {
+  max-width: 500px;
+}
+
+.device-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+.device-content p {
+  font-size: 1.2rem; /* Medium size */
+  color: #ccc;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+
+.device-content p:hover {
+  color: #e50914; /* Netflix red */
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+
+.device-section img {
+  max-width: 400px;
+  width: 100%;
+}
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+.shows-section {
+  position: relative;
+}
+
+
+/* FAQ Section */
+.faq-section {
+  padding: 50px 20px;
+  background-color: #111;
+}
+
+.FAQ__item {
+  margin-bottom: 15px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.FAQ__title {
+  padding: 15px 20px;
+  background-color: #222;
+  cursor: pointer;
+  position: relative;
+  font-weight: 600;
+}
+
+.FAQ__title::after {
+  content: '+';
+  position: absolute;
+  right: 20px;
+  font-size: 1.5rem;
+}
+
+.FAQ__item.active .FAQ__title::after {
+  content: '-';
+}
+
+.FAQ__content {
+  padding: 15px 20px;
+  display: none;
+  font-size: 0.95rem;
+  color: #ccc;
+  background-color: #1a1a1a;
+}
+
+.FAQ__item.active .FAQ__content {
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem; /* Medium font size */
+  color: #888;
+  background-color: #000;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer:hover {
+  color: #e50914; /* Netflix red on hover */
+  transform: scale(1.06); /* Slight zoom effect */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .email-form {
+    flex-direction: column;
+  }
+
+  .email-form input,
+  .email-form button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .shows-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .device-section {
+    flex-direction: column;
+    text-align: center;
+  }
+}
