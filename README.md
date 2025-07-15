@@ -20,8 +20,6 @@ A simple and responsive Netflix homepage clone built using **HTML**, **CSS**, an
 - CSS3  
 - JavaScript (Vanilla)
 
----
-)
 
 ---
 
@@ -50,3 +48,8 @@ You can use, modify, and share it freely.
 - Google Fonts & Font Awesome  
 - YouTube tutorials for design reference
 
+## 🚀 Live Demo
+
+Check out the live version of the Netflix Clone:
+
+👉 [View Project on Netlify](//https://websiteofnetfli.netlify.app)
