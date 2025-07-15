@@ -52,4 +52,4 @@ You can use, modify, and share it freely.
 
 Check out the live version of the Netflix Clone:
 
-👉 [View Project on Netlify](//https://websiteofnetfli.netlify.app)
+👉 [View Project on Netlify](https://68763175021ae6337ab712ef--websiteofnetfli.netlify.app/)
